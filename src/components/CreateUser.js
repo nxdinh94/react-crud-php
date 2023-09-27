@@ -14,7 +14,8 @@ function CreateUser() {
     }
     const handleSubmit = (event) =>{
         event.preventDefault();
-        console.log(inputs);
+        axios.post('http://localhost/api/user/save', inputs);
+        // axios.post('http://localhost/api/', inputs);
     }
 
     return ( 
