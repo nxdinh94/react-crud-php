@@ -1,9 +1,12 @@
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 
 function CreateUser() {
 
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState();
+
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -14,7 +17,17 @@ function CreateUser() {
     }
     const handleSubmit = (event) =>{
         event.preventDefault();
-        axios.post('http://localhost/api/user/save', inputs);
+        if(inputs !== ''){
+            axios.post('http://localhost/api/user/save', inputs)
+            .then(function(res){
+                console.log(res.data);
+                navigate('/');
+            });
+        }else {
+            return;
+        }
+           
+        
         // axios.post('http://localhost/api/', inputs);
     }
 
