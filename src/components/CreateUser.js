@@ -20,7 +20,6 @@ function CreateUser() {
         if(inputs !== ''){
             axios.post('http://localhost/api/user/save', inputs)
             .then(function(res){
-                console.log(res.data);
                 navigate('/');
             });
         }else {
